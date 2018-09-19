@@ -1,34 +1,46 @@
+using System;
+using System.Collections.Generic;
+
 namespace PIACore.Model
 {
     public class Player
     {
+        private string name;
         private bool _isSelf;
+        private List<Card> _cards;
+        private int bank;
+        private int bid;
+        private PlayerPosition position;
 
-        private PlayerTurn _currentTurn;
-
-        private Card[] _cards = new Card[2];
-
-        private Table _table;
-
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
         public bool IsSelf
         {
             get => _isSelf;
             set => _isSelf = value;
         }
-        public PlayerTurn CurrentTurn
-        {
-            get => _currentTurn;
-            set => _currentTurn = value;
-        }
-        public Card[] Cards
+        public List<Card> Cards
         {
             get => _cards;
             set => _cards = value;
         }
-        public Table Table
+        public int Bank
         {
-            get => _table;
-            set => _table = value;
+            get => bank;
+            set => bank = value;
+        }
+        public int Bid
+        {
+            get => bid;
+            set => bid = value;
+        }
+        public PlayerPosition Position
+        {
+            get => position;
+            set => position = value;
         }
     }
 }

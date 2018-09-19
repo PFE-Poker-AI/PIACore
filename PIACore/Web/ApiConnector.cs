@@ -1,5 +1,7 @@
 using System;
 using System.Net.Http;
+using Json;
+using PIACore.Model;
 
 namespace PIACore.Web
 {
@@ -10,10 +12,14 @@ namespace PIACore.Web
 
         public string getId()
         {
-            client.DefaultRequestHeaders.Add("token",Environment.GetEnvironmentVariable("REMOTE_API_TOKEN"));
-
-            return "";
+            client.DefaultRequestHeaders.Add("token", Environment.GetEnvironmentVariable("REMOTE_API_KEY"));
+            var response = JsonParser.FromJson(client.GetStringAsync(url + "/hello").Result);
+            return (string) response["username"];
         }
-        
+
+        public Table getTable()
+        {
+            return null;
+        }
     }
 }

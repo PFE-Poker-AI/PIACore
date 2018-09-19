@@ -2,7 +2,18 @@ namespace PIACore.Model
 {
     public class Card
     {
-        int value;
-        int color;
+        private int value;
+        private int color;
+
+        public int Value
+        {
+            get => value;
+            set => this.value = value;
+        }
+        public int Color
+        {
+            get => color;
+            set => color = value;
+        }
     }
 }

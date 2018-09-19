@@ -10,25 +10,32 @@ namespace PIACore.Kernel
         public void Run()
         {
             // Regarder les tables
-            joinTables();
-            
+            updateTables();
+
             // Pour chaque table
             foreach (var table in _tables)
             {
                 //Recuperer l'etat :
-                
+
                 //Soit jouer
-                
+
                 //Soit fermer la table (fin de partie)
             }
         }
 
-
-        private void joinTables()
+        private void updateTables()
         {
-            //IF we find a table to join
-            IAiManager manager = new T();
-            
+            // Get all tables
+
+            //IF we find a table to join :
+            TableAi manager = new TableAi
+            {
+                AiManager = new T(), Table = new Table(),
+            };
+
+            _tables.Add("table key", manager);
+
+            //IF we find a table that is closed :
         }
     }
 
