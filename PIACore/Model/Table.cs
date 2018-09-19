@@ -4,8 +4,26 @@ namespace PIACore.Model
 {
     public class Table
     {
-            private Card[] cards = new Card[5];
-            private Dictionary<string, Player> players = new Dictionary<string,Player>();
+        private string _id;
+        private Card[] _cards;
+        private Dictionary<string, Player> _players;
 
+        public Card[] Cards
+        {
+            get => _cards;
+        }
+        public Dictionary<string, Player> Players
+        {
+            get => _players;
+        }
+        
+        
+
+        public Table(string id, Card[] cards, Dictionary<string, Player> players)
+        {
+            _id = id;
+            _cards = cards;
+            _players = players;
+        }
     }
 }

@@ -4,7 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIACore", "PIACore\PIACore.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Run|Any CPU = Run|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD254D7F-061C-41F2-A58D-8CB69BE8A258}.Run|Any CPU.ActiveCfg = Run|Any CPU
+		{AD254D7F-061C-41F2-A58D-8CB69BE8A258}.Run|Any CPU.Build.0 = Run|Any CPU
 	EndGlobalSection
 EndGlobal

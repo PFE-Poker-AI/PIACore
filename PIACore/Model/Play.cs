@@ -10,12 +10,5 @@ namespace PIACore.Model
             this.play = play;
         }
 
-        public int getAmount() {
-            return amount;
-        }
-
-        public PlayType getPlay() {
-            return play;
-        }
     }
 }
