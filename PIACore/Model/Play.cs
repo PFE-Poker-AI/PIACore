@@ -1,3 +1,5 @@
+using PIACore.Model.Enums;
+
 namespace PIACore.Model
 {
     public class Play

@@ -1,4 +1,4 @@
-namespace PIACore.Model
+namespace PIACore.Model.Enums
 {
     public enum PlayerPosition
     {

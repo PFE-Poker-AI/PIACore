@@ -1,11 +1,21 @@
 using System.Collections.Generic;
+using System.Linq;
+using PIACore.Containers;
 using PIACore.Model;
+using PIACore.Web;
 
 namespace PIACore.Kernel
 {
     public class Game<T> where T : class, IAiManager, new()
     {
-        private Dictionary<string, TableAi> _tables = new Dictionary<string, TableAi>();
+        private Dictionary<string, TableContainer> _tables = new Dictionary<string, TableContainer>();
+
+        private ApiConnector connector;
+
+        public Game()
+        {
+            connector = new ApiConnector();
+        }
 
         public void Run()
         {
@@ -25,35 +35,33 @@ namespace PIACore.Kernel
 
         private void updateTables()
         {
-            // Get all tables
+            //Join new tables :
+            var tableIds = connector.getNewTableIds();
 
-            //IF we find a table to join :
-            TableAi manager = new TableAi
+            //Foreach table to join :
+            foreach (var tableId in tableIds)
             {
-                AiManager = new T(), Table = new Table(),
-            };
+                connector.joinGivenTable(tableId);
 
-            _tables.Add("table key", manager);
-
-            //IF we find a table that is closed :
-        }
-    }
-
-    public class TableAi
-    {
-        private IAiManager _aiManager;
-
-        private Table _table;
-
-        public IAiManager AiManager
-        {
-            get => _aiManager;
-            set => _aiManager = value;
-        }
-        public Table Table
-        {
-            get => _table;
-            set => _table = value;
+                TableContainer container = new TableContainer
+                {
+                    AiManager = new T(), Table = new Table(), TableId = tableId
+                };
+                
+                _tables.Add(tableId, container);
+            }
+            
+            //Remove unused tables from the list :
+            var currentTables = connector.currentTables();
+            
+            foreach (var tableId in _tables.Keys)
+            {
+                if (!currentTables.Contains(tableId))
+                {
+                    // Remove the table :
+                    currentTables.Remove(tableId);
+                }
+            }
         }
     }
 }

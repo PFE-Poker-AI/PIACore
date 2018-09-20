@@ -9,6 +9,6 @@ namespace PIACore.Model
 
         private int pot;
 
-        private int currentRound;
+        private int blindValue;
     }
 }

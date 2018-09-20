@@ -1,5 +1,6 @@
 ﻿using System;
 using dotenv.net;
+using PIACore.AI;
 using PIACore.Web;
 
 namespace PIACore.Kernel
@@ -8,12 +9,17 @@ namespace PIACore.Kernel
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             DotEnv.Config();
             
-            ApiConnector connector = new ApiConnector();
+            //var game = new Game<AlwaysCallAIManager>();
+            
+            
+            var connector = new ApiConnector();
 
-            Console.Write(connector.getId());
+            Console.WriteLine(connector.currentTables());
+
+
+
         }
     }
 }
