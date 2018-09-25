@@ -7,11 +7,10 @@ namespace PIACore.Model
     public class Player
     {
         private string name;
-        private bool _isSelf;
         private List<Card> _cards;
         private int bank;
         private int bid;
-        private PlayerPosition position;
+        private int position;
 
         public string Name
         {
@@ -20,8 +19,7 @@ namespace PIACore.Model
         }
         public bool IsSelf
         {
-            get => _isSelf;
-            set => _isSelf = value;
+            get { return _cards != null && _cards.Count > 0; }
         }
         public List<Card> Cards
         {
@@ -38,10 +36,41 @@ namespace PIACore.Model
             get => bid;
             set => bid = value;
         }
-        public PlayerPosition Position
+        public int Position
         {
             get => position;
             set => position = value;
+        }
+
+        public static Dictionary<string, Player> createAllFromJsonList(List<object> jsonPlayers, string playerName)
+        {
+            var players = new Dictionary<string, Player>();
+            foreach (var element in jsonPlayers)
+            {
+                var player = (Dictionary<string, object>)element;
+
+                var user = (string)player["user"];
+                var bank = Convert.ToInt32(player["bankroll"]);
+                var bid = Convert.ToInt32(player["bet"]);
+                var position = Convert.ToInt32(player["pos"]);
+                List<Card> cards = null;
+                if (user.Equals(playerName))
+                {
+                    cards = Card.createFromJsonList((List<object>)player["cards"]);
+                }
+                players.Add(user,
+                            new Player
+                            {
+                                Bank = bank,
+                                Name = user,
+                                Cards = cards,
+                                Bid = bid,
+                                Position = position
+                            }
+                );
+            }
+
+            return players;
         }
     }
 }

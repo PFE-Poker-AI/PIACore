@@ -1,5 +1,6 @@
 using PIACore.Kernel;
 using PIACore.Model;
+using PIACore.Model.Enums;
 
 namespace PIACore.AI
 {
@@ -8,12 +9,7 @@ namespace PIACore.AI
         
         public Play playAction(Table table)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void gameFinishedNotify()
-        {
-            throw new System.NotImplementedException();
+            return new Play(PlayType.call, 0);
         }
     }
 }

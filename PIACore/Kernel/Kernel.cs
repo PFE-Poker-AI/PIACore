@@ -11,12 +11,14 @@ namespace PIACore.Kernel
         {
             DotEnv.Config();
             
-            //var game = new Game<AlwaysCallAIManager>();
+            var game = new Game<AlwaysCallAIManager>();
             
             
-            var connector = new ApiConnector();
+            //var connector = new ApiConnector();
 
-            Console.WriteLine(connector.currentTables());
+            game.Run();
+            
+            //Console.WriteLine(connector.currentTables());
 
 
 
