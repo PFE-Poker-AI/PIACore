@@ -3,30 +3,24 @@ using PIACore.Model;
 
 namespace PIACore.Containers
 {
+    /// <summary>
+    /// A table container is the association of a Table, an implementation of an AiManager and a TableId.
+    /// </summary>
     public class TableContainer
     {
-        private IAiManager _aiManager;
+        /// <summary>
+        /// The implementation of the AI for this Container
+        /// </summary>
+        public IAiManager AiManager { get; set; }
 
-        private Table _table;
+        /// <summary>
+        /// The Table for this container
+        /// </summary>
+        public Table Table { get; set; }
 
-        private string _tableId;
-
-        public IAiManager AiManager
-        {
-            get => _aiManager;
-            set => _aiManager = value;
-        }
-        
-        public Table Table
-        {
-            get => _table;
-            set => _table = value;
-        }
-
-        public string TableId
-        {
-            get => _tableId;
-            set => _tableId = value;
-        }
+        /// <summary>
+        /// The id key of the table for this container
+        /// </summary>
+        public string TableId { get; set; }
     }
 }

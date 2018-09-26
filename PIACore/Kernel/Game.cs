@@ -1,25 +1,41 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using PIACore.Containers;
-using PIACore.Log;
+using PIACore.Helpers;
 using PIACore.Model;
+using PIACore.Model.Enums;
 using PIACore.Web;
 
 namespace PIACore.Kernel
 {
+    /// <summary>
+    /// A game is a physical instance of a playing session on multiple tables.
+    /// </summary>
+    /// <typeparam name="T">The instance of the IAiManager that will play the game</typeparam>
     public class Game<T> where T : class, IAiManager, new()
     {
-        private Dictionary<string, TableContainer> _tables = new Dictionary<string, TableContainer>();
+        /// <summary>
+        /// The list of all table containers used in this game session.
+        /// </summary>
+        private Dictionary<string, TableContainer> tables = new Dictionary<string, TableContainer>();
 
+        /// <summary>
+        /// The APIConnector used to interact with Poker Online.
+        /// </summary>
         private ApiConnector connector;
 
+        /// <summary>
+        /// Instanciate a game with a specific API Connector.
+        /// </summary>
         public Game()
         {
             connector = new ApiConnector();
         }
 
+        /// <summary>
+        /// Run the game indefinitely
+        /// </summary>
         public void Run()
         {
             string playerId = connector.getId();
@@ -40,7 +56,7 @@ namespace PIACore.Kernel
 
                 if (!failure)
                 {
-                    foreach (var table in _tables)
+                    foreach (var table in tables)
                     {
                         Play play = null;
                         Table tableModel = null;
@@ -69,7 +85,7 @@ namespace PIACore.Kernel
                         {
                             if (play != null)
                             {
-                                Logger.Info("AI played : " + play.PlayType);
+                                Logger.Info("AI played : " + play.PlayType + (play.PlayType == PlayType.Raise ? " and raised "+play.Amount : ""));
                                 connector.playTurn(play.PlayType, table.Key, play.Amount);
                             }
                             else
@@ -88,6 +104,9 @@ namespace PIACore.Kernel
             }
         }
 
+        /// <summary>
+        /// Update all tables of the current game, removing those that are over, and joining those that have the good tag.
+        /// </summary>
         private void updateTables()
         {
             //Join new tables :
@@ -103,13 +122,13 @@ namespace PIACore.Kernel
                     AiManager = new T(), Table = new Table(), TableId = tableId
                 };
 
-                _tables.Add(tableId, container);
+                tables.Add(tableId, container);
             }
 
             //Remove unused tables from the list :
             var currentTables = connector.currentTables();
 
-            foreach (var tableId in _tables.Keys)
+            foreach (var tableId in tables.Keys)
             {
                 if (!currentTables.Contains(tableId))
                 {
@@ -121,14 +140,14 @@ namespace PIACore.Kernel
             // Join tables that were not joined before :
             foreach (var currentOnlineTables in currentTables)
             {
-                if (!_tables.ContainsKey(currentOnlineTables))
+                if (!tables.ContainsKey(currentOnlineTables))
                 {
                     TableContainer container = new TableContainer
                     {
                         AiManager = new T(), Table = new Table(), TableId = currentOnlineTables
                     };
 
-                    _tables.Add(currentOnlineTables, container);
+                    tables.Add(currentOnlineTables, container);
                 }
             }
         }

@@ -1,9 +1,12 @@
 namespace PIACore.Model.Enums
 {
+    /// <summary>
+    /// An enum representing all possible play types.
+    /// </summary>
     public enum PlayType
     {
-        call,
-        raise,
-        fold,
+        Call,
+        Raise,
+        Fold,
     }
 }

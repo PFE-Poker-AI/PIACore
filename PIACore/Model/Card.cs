@@ -4,22 +4,39 @@ using PIACore.Model.Enums;
 
 namespace PIACore.Model
 {
+    /// <summary>
+    /// This model represents a poker Card.
+    /// </summary>
     public class Card
     {
         private CardValue value;
         private CardColor color;
 
+        /// <summary>
+        /// The card value.
+        /// </summary>
         public CardValue Value
         {
             get => value;
             set => this.value = value;
         }
+        
+        /// <summary>
+        /// The card color.
+        /// </summary>
         public CardColor Color
         {
             get => color;
             set => color = value;
         }
 
+        /// <summary>
+        /// Create a List of cards from a given List of object (issued from a json response).
+        /// </summary>
+        /// <param name="jsonCards">The json response.</param>
+        /// <returns>A list of Cards.</returns>
+        /// <exception cref="WrongValuePokerException">Thrown when a received value could not be mapped.</exception>
+        /// <exception cref="WrongColorPokerException">Thrown when a received color could not be mapped.</exception>
         public static List<Card> createFromJsonList(List<object> jsonCards)
         {
             var cards = new List<Card>();
@@ -103,7 +120,6 @@ namespace PIACore.Model
                     }
                 );
             }
-
             return cards;
         }
     }

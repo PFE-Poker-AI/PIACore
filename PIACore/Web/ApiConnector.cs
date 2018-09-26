@@ -5,12 +5,14 @@ using System.Net.Http.Headers;
 using System.Text;
 using Json;
 using Newtonsoft.Json;
-using PIACore.Log;
 using PIACore.Model;
 using PIACore.Model.Enums;
 
 namespace PIACore.Web
 {
+    /// <summary>
+    /// The connector between the Poker API and the AI.
+    /// </summary>
     public class ApiConnector
     {
         private static readonly HttpClient Client = new HttpClient();
@@ -22,12 +24,20 @@ namespace PIACore.Web
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
+        /// <summary>
+        /// Calls the /hello route, retrieving the player name.
+        /// </summary>
+        /// <returns></returns>
         public string getId()
         {
             var response = JsonParser.FromJson(Client.GetStringAsync(url + "/hello").Result);
             return (string)response["user"];
         }
 
+        /// <summary>
+        /// Get all the available table ids.
+        /// </summary>
+        /// <returns></returns>
         public List<string> getNewTableIds()
         {
             var tables = new List<string>();
@@ -50,6 +60,10 @@ namespace PIACore.Web
             return tables;
         }
 
+        /// <summary>
+        /// Join the given table.
+        /// </summary>
+        /// <param name="tableId">The table id of the table to join.</param>
         public void joinGivenTable(string tableId)
         {
             var value = JsonConvert.SerializeObject(new Dictionary<string, string>
@@ -70,6 +84,10 @@ namespace PIACore.Web
             Console.WriteLine(responseAsString);
         }
 
+        /// <summary>
+        /// The current tables.
+        /// </summary>
+        /// <returns>A list of all the tables the AI is seated on.</returns>
         public List<string> currentTables()
         {
             var tables = new List<string>();
@@ -84,6 +102,12 @@ namespace PIACore.Web
             return tables;
         }
 
+        /// <summary>
+        /// Get the state (model representation) of a specific table.
+        /// </summary>
+        /// <param name="tableId">the table id.</param>
+        /// <param name="playerName">The player name.</param>
+        /// <returns></returns>
         public Table getTableState(string tableId, string playerName)
         {
             var response = JsonParser.FromJson(Client.GetStringAsync(url + "/state/" + tableId).Result);
@@ -105,6 +129,12 @@ namespace PIACore.Web
             return turnTable;
         }
 
+        /// <summary>
+        /// Instruct Poker AI to play the given turn.
+        /// </summary>
+        /// <param name="turn"></param>
+        /// <param name="tableId"></param>
+        /// <param name="value"></param>
         public void playTurn(PlayType turn, string tableId, int value = 0)
         {
             string action;
@@ -117,13 +147,13 @@ namespace PIACore.Web
 
             switch (turn)
             {
-                case PlayType.call:
+                case PlayType.Call:
                     action = "/call";
                     break;
-                case PlayType.fold:
+                case PlayType.Fold:
                     action = "/raise";
                     break;
-                case PlayType.raise:
+                case PlayType.Raise:
                     data.Add("raise", value);
                     action = "/fold";
                     break;
