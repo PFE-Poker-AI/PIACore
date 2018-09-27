@@ -7,8 +7,8 @@ namespace PIACore.Model
     /// </summary>
     public class Play
     {
-        private int amount;
-        private PlayType playType;
+        private int _amount;
+        private PlayType _playType;
     
         /// <summary>
         /// Constructor.
@@ -25,8 +25,8 @@ namespace PIACore.Model
         /// </summary>
         public int Amount
         {
-            get => amount;
-            set => amount = value;
+            get => _amount;
+            set => _amount = value;
         }
         
         /// <summary>
@@ -34,8 +34,8 @@ namespace PIACore.Model
         /// </summary>
         public PlayType PlayType
         {
-            get => playType;
-            set => playType = value;
+            get => _playType;
+            set => _playType = value;
         }
     }
 }

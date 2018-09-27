@@ -2,30 +2,30 @@ namespace PIACore.Model
 {
     public class PlayerTurn
     {
-        private bool isOut;
-        private int bank;
-        private int bet;
-        private int position;
+        private bool _isOut;
+        private int _bank;
+        private int _bet;
+        private int _position;
         
         public bool IsOut
         {
-            get => isOut;
-            set => isOut = value;
+            get => _isOut;
+            set => _isOut = value;
         }
         public int Bank
         {
-            get => bank;
-            set => bank = value;
+            get => _bank;
+            set => _bank = value;
         }
         public int Bet
         {
-            get => bet;
-            set => bet = value;
+            get => _bet;
+            set => _bet = value;
         }
         public int Position
         {
-            get => position;
-            set => position = value;
+            get => _position;
+            set => _position = value;
         }
     }
 }

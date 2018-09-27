@@ -9,20 +9,20 @@ namespace PIACore.Model
     /// </summary>
     public class Player
     {
-        private string name;
-        private List<Card> cards;
-        private int bank;
-        private int bid;
-        private int position;
-        private bool isSelf;
+        private string _name;
+        private List<Card> _cards;
+        private int _bank;
+        private int _bid;
+        private int _position;
+        private bool _isSelf;
 
         /// <summary>
         /// The name of the player.
         /// </summary>
         public string Name
         {
-            get => name;
-            set => name = value;
+            get => _name;
+            set => _name = value;
         }
         
         /// <summary>
@@ -30,8 +30,8 @@ namespace PIACore.Model
         /// </summary>
         public bool IsSelf
         {
-            get => isSelf;
-            set => isSelf = value;
+            get => _isSelf;
+            set => _isSelf = value;
         }
 
         /// <summary>
@@ -39,8 +39,8 @@ namespace PIACore.Model
         /// </summary>
         public List<Card> Cards
         {
-            get => cards;
-            set => cards = value;
+            get => _cards;
+            set => _cards = value;
         }
         
         /// <summary>
@@ -48,8 +48,8 @@ namespace PIACore.Model
         /// </summary>
         public int Bank
         {
-            get => bank;
-            set => bank = value;
+            get => _bank;
+            set => _bank = value;
         }
         
         /// <summary>
@@ -57,8 +57,8 @@ namespace PIACore.Model
         /// </summary>
         public int Bid
         {
-            get => bid;
-            set => bid = value;
+            get => _bid;
+            set => _bid = value;
         }
         
         /// <summary>
@@ -66,8 +66,8 @@ namespace PIACore.Model
         /// </summary>
         public int Position
         {
-            get => position;
-            set => position = value;
+            get => _position;
+            set => _position = value;
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace PIACore.Model
         /// <param name="jsonPlayers">The json object representing players.</param>
         /// <param name="playerName">Own player's name.</param>
         /// <returns></returns>
-        public static Dictionary<string, Player> createAllFromJsonList(List<object> jsonPlayers, string playerName)
+        public static Dictionary<string, Player> CreateAllFromJsonList(List<object> jsonPlayers, string playerName)
         {
             var players = new Dictionary<string, Player>();
             foreach (var element in jsonPlayers)
@@ -93,7 +93,7 @@ namespace PIACore.Model
                 List<Card> cards = null;
                 if (user.Equals(playerName))
                 {
-                    cards = Card.createFromJsonList((List<object>)player["cards"]);
+                    cards = Card.CreateFromJsonList((List<object>)player["cards"]);
                 }
                 players.Add(user,
                             new Player

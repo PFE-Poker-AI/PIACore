@@ -9,16 +9,16 @@ namespace PIACore.Model
     /// </summary>
     public class Card
     {
-        private CardValue value;
-        private CardColor color;
+        private CardValue _value;
+        private CardColor _color;
 
         /// <summary>
         /// The card value.
         /// </summary>
         public CardValue Value
         {
-            get => value;
-            set => this.value = value;
+            get => _value;
+            set => this._value = value;
         }
         
         /// <summary>
@@ -26,8 +26,8 @@ namespace PIACore.Model
         /// </summary>
         public CardColor Color
         {
-            get => color;
-            set => color = value;
+            get => _color;
+            set => _color = value;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace PIACore.Model
         /// <returns>A list of Cards.</returns>
         /// <exception cref="WrongValuePokerException">Thrown when a received value could not be mapped.</exception>
         /// <exception cref="WrongColorPokerException">Thrown when a received color could not be mapped.</exception>
-        public static List<Card> createFromJsonList(List<object> jsonCards)
+        public static List<Card> CreateFromJsonList(List<object> jsonCards)
         {
             var cards = new List<Card>();
 

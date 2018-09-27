@@ -10,4 +10,6 @@ Global
 		{AD254D7F-061C-41F2-A58D-8CB69BE8A258}.Run|Any CPU.ActiveCfg = Run|Any CPU
 		{AD254D7F-061C-41F2-A58D-8CB69BE8A258}.Run|Any CPU.Build.0 = Run|Any CPU
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
 EndGlobal

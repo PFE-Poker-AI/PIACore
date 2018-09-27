@@ -12,6 +12,6 @@ namespace PIACore.Kernel
         /// </summary>
         /// <param name="table">The Table that represent the game at a given time.</param>
         /// <returns>The action that will be played by the AI.</returns>
-        Play playAction(Table table);
+        Play PlayAction(Table table);
     }
 }

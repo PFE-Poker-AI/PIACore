@@ -8,18 +8,18 @@ namespace PIACore.Model
     /// </summary>
     public class Table
     {
-        private List<Card> cards;
-        private Dictionary<string, Player> players;
-        private int pot;
-        private int smallBlindValue;
+        private List<Card> _cards;
+        private Dictionary<string, Player> _players;
+        private int _pot;
+        private int _smallBlindValue;
 
         /// <summary>
         /// The shown cards on the table.
         /// </summary>
         public List<Card> Cards
         {
-            get => cards;
-            set => cards = value;
+            get => _cards;
+            set => _cards = value;
         }
         
         /// <summary>
@@ -27,8 +27,8 @@ namespace PIACore.Model
         /// </summary>
         public Dictionary<string, Player> Players
         {
-            get => players;
-            set => players = value;
+            get => _players;
+            set => _players = value;
         }
         
         /// <summary>
@@ -36,8 +36,8 @@ namespace PIACore.Model
         /// </summary>
         public int Pot
         {
-            get => pot;
-            set => pot = value;
+            get => _pot;
+            set => _pot = value;
         }
         
         /// <summary>
@@ -45,8 +45,8 @@ namespace PIACore.Model
         /// </summary>
         public int SmallBlindValue
         {
-            get => smallBlindValue;
-            set => smallBlindValue = value;
+            get => _smallBlindValue;
+            set => _smallBlindValue = value;
         }
 
         /// <summary>
@@ -57,12 +57,12 @@ namespace PIACore.Model
         /// <param name="playerName">The AI player name.</param>
         /// <param name="players">The list of players on this table.</param>
         /// <returns>An instantiated Table.</returns>
-        public static Table createFromJson(Dictionary<string, object> jsonTable, string playerName, Dictionary<string, Player> players)
+        public static Table CreateFromJson(Dictionary<string, object> jsonTable, string playerName, Dictionary<string, Player> players)
         {
             List<Card> cards = null;
             if (jsonTable.ContainsKey("visibleCards"))
             {
-                cards = Card.createFromJsonList((List<object>)jsonTable["visibleCards"]);
+                cards = Card.CreateFromJsonList((List<object>)jsonTable["visibleCards"]);
             }
 
             var pot = Convert.ToInt32(jsonTable["pot"]);

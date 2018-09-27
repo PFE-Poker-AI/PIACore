@@ -12,43 +12,60 @@ namespace PIACore.Helpers
         /// Log a message on a Debug level.
         /// </summary>
         /// <param name="input">The message to log</param>
-        public static void Debug(string input)
+        /// <param name="slug">The optional slug (identify the AI)</param>
+        public static void Debug(string input, string slug = "")
         {
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine(input);
-            Console.ResetColor();
+            WriteMessage(input, ConsoleColor.Gray, slug);
         }
-        
+
         /// <summary>
         /// Log a message on a Info level.
         /// </summary>
         /// <param name="input">The message to log</param>
-        public static void Info(string input)
+        /// <param name="slug">The optional slug (identify the AI)</param>
+        public static void Info(string input, string slug = "")
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(input);
-            Console.ResetColor();
+            WriteMessage(input, ConsoleColor.Green, slug);
         }
-        
+
         /// <summary>
         /// Log a message on a Warning level.
         /// </summary>
         /// <param name="input">The message to log</param>
-        public static void Warning(string input)
+        /// <param name="slug">The optional slug (identify the AI)</param>
+        public static void Warning(string input, string slug = "")
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(input);
-            Console.ResetColor();
+            WriteMessage(input, ConsoleColor.Yellow, slug);
         }
-        
+
         /// <summary>
         /// Log a message on a Error level.
         /// </summary>
         /// <param name="input">The message to log</param>
-        public static void Error(string input)
+        /// <param name="slug">The optional slug (identify the AI)</param>
+        public static void Error(string input, string slug = "")
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(input);
+            WriteMessage(input, ConsoleColor.Red, slug);
+        }
+
+        /// <summary>
+        /// Writes the message
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="foregroundColor"></param>
+        /// <param name="slug"></param>
+        private static void WriteMessage(string message, ConsoleColor foregroundColor,string slug)
+        {
+            
+            if (!string.IsNullOrEmpty(slug))
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(slug);
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = foregroundColor;
+                Console.Write(" -> ");
+            }
+            Console.WriteLine(message);
             Console.ResetColor();
         }
     }
