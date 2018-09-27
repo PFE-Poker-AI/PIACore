@@ -1,23 +1,23 @@
-#Poker AI Core
+# Poker AI Core
 
-##Getting started
+## Getting started
 
 A simple tool for implementing custom poker AI that connects to PokerAI Online.
 
-##How to implement
+## How to implement
 
 Clone this repository on your local machine.
 
-###Step 1 :
+### Step 1 :
 
 
 
-######Step 1 : Add a Folder in the AI folder
+###### Step 1 : Add a Folder in the AI folder
 
 All your work and custom classes will be stored within this specific AI Folder.
 You can organise yourself however you want within this folder.
 
-######Step 2 : Create your AI main class
+###### Step 2 : Create your AI main class
 
 To do so implement the `IAIManager` Interface.
 Your logic will be implemented within the method `PlayAction`.
@@ -26,7 +26,7 @@ Everytime that it's your turn to play you will receive a `Table` model that defi
 
 You will have to respond by returning a `Play` model to play your hand.
 
-######Step 3 : Add your AI Data to the runDefinition
+###### Step 3 : Add your AI Data to the runDefinition
 
 Add the following json to the `runDefinition.json` at the root of the application.
 
@@ -50,6 +50,6 @@ Add the following json to the `runDefinition.json` at the root of the applicatio
 | TimeInMillis | The time in milliseconds between each consequent checking of the game state. |
 | ApiKey | The API Key that will be used to connect to poker AI. |
 
-######Step 4 : Code your AI
+###### Step 4 : Code your AI
 
 Enjoy
