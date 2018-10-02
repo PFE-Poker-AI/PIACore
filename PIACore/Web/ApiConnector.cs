@@ -82,8 +82,6 @@ namespace PIACore.Web
 
             HttpResponseMessage response = Client.PostAsync(Url + "/seat", stringContent).Result;
             string responseAsString = response.Content.ReadAsStringAsync().Result;
-
-            Console.WriteLine(responseAsString);
         }
 
         /// <summary>

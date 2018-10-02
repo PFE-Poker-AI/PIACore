@@ -29,7 +29,6 @@ namespace PIACore.Kernel
 
             foreach (var environment in environments)
             {
-                
                 var myThread = new Thread(
                     () => SingleAiLoading(
                         (Dictionary<string, object>) ((List<object>) environment.Value)[0])

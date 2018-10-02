@@ -94,7 +94,7 @@ namespace PIACore.Kernel
 
                         if (tableModel != null)
                         {
-                            play = table.Value.AiManager.PlayAction(tableModel);
+                            play = table.Value.AiManager.PlayAction(tableModel, _slug);
                         }
                         else
                         {

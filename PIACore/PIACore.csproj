@@ -4,6 +4,7 @@
         <TargetFramework>netcoreapp2.1</TargetFramework>
         <Configurations>Debug;Release;Run</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,4 +13,6 @@
       <PackageReference Include="JSON" Version="1.0.1" />
       <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.6" />
     </ItemGroup>
+    
 </Project>
+
