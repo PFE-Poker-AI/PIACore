@@ -15,6 +15,7 @@ namespace PIACore.Model
         private int _bid;
         private int _position;
         private bool _isSelf;
+        private bool _inPlay;
 
         /// <summary>
         /// The name of the player.
@@ -32,6 +33,15 @@ namespace PIACore.Model
         {
             get => _isSelf;
             set => _isSelf = value;
+        }
+        
+        /// <summary>
+        /// Tells if this player has folded or is still in play.
+        /// </summary>
+        public bool InPlay
+        {
+            get => _inPlay;
+            set => _inPlay = value;
         }
 
         /// <summary>
@@ -89,6 +99,7 @@ namespace PIACore.Model
                 var bid = Convert.ToInt32(player["bet"]);
                 var position = Convert.ToInt32(player["pos"]);
                 var isSelf = Convert.ToBoolean(player["isSelf"]);
+                var inPlay = Convert.ToBoolean(player["inPlay"]);
                 
                 List<Card> cards = null;
                 if (user.Equals(playerName))
@@ -104,6 +115,7 @@ namespace PIACore.Model
                                 Bid = bid,
                                 Position = position,
                                 IsSelf = isSelf,
+                                InPlay= inPlay
                             }
                 );
             }
