@@ -59,9 +59,7 @@ namespace PIACore.Helpers
             
             if (!string.IsNullOrEmpty(slug))
             {
-                Console.BackgroundColor = ConsoleColor.White;
                 Console.Write(slug);
-                Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = foregroundColor;
                 Console.Write(" -> ");
             }
