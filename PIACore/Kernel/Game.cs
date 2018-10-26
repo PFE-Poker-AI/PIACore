@@ -150,14 +150,21 @@ namespace PIACore.Kernel
 
             //Remove unused tables from the list :
             var currentTables = _connector.CurrentTables();
+            var removableIds = new List<string>();
 
             foreach (var tableId in _tables.Keys)
             {
                 if (!currentTables.Contains(tableId))
                 {
-                    // Remove the table :
-                    currentTables.Remove(tableId);
+                    // Tag the table toRemove :
+                    removableIds.Add(tableId);
                 }
+            }
+
+            foreach (var tableId in removableIds)
+            {
+                // Remove the table
+                _tables.Remove(tableId);
             }
 
             // Join tables that were not joined before :
