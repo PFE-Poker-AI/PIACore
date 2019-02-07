@@ -151,11 +151,11 @@ namespace PIACore.Web
                     action = "/call";
                     break;
                 case PlayType.Fold:
-                    action = "/raise";
+                    action = "/fold";
                     break;
                 case PlayType.Raise:
                     data.Add("raise", value);
-                    action = "/fold";
+                    action = "/raise";
                     break;
                 default:
                     action = "";

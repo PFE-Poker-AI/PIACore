@@ -15,11 +15,11 @@ namespace PIACore.Model
         /// </summary>
         /// <param name="play">The play type.</param>
         /// <param name="amount">The amount value.</param>
-        public Play(PlayType play, int amount) {
+        public Play(PlayType play, int amount = 0) {
             Amount = amount;
             PlayType = play;
         }
-
+        
         /// <summary>
         /// The amount to play (only used when raising).
         /// </summary>

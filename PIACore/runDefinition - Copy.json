@@ -1,0 +1,17 @@
+[
+  {
+    "ClassLocation":"PIACore.AI.AlwaysCallAI.AlwaysCallAIManager",
+    "Slug":"Always Call",
+    "TableIdentifier":"[EL_PSY_KONGROO]",
+    "TimeInMillis":2000,
+    "ApiKey":"ad05b41e-85e3-45c6-b2d2-bd80c4adf6a0"
+  },
+
+  {
+    "ClassLocation":"PIACore.AI.LDCustomAI1.AIManager",
+    "Slug":"Custom functional",
+    "TableIdentifier":"[FUNCTIONAL_AI]",
+    "TimeInMillis":2000,
+    "ApiKey":"ad05b41e-85e3-45c6-b2d2-bd80c4adf6a0"
+  }
+]

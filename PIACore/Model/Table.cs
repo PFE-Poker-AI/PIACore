@@ -9,10 +9,21 @@ namespace PIACore.Model
     public class Table
     {
         private List<Card> _cards;
+        private int _gamesOccured;
         private Dictionary<string, Player> _players;
         private int _pot;
         private int _smallBlindValue;
 
+        
+        /// <summary>
+        /// The shown cards on the table.
+        /// </summary>
+        public int GamesOccured
+        {
+            get => _gamesOccured;
+            set => _gamesOccured = value;
+        }
+        
         /// <summary>
         /// The shown cards on the table.
         /// </summary>
@@ -49,6 +60,7 @@ namespace PIACore.Model
             set => _smallBlindValue = value;
         }
 
+        
         /// <summary>
         /// Instantiates a Table from a given json data.
         /// Use the player list to fill the current
@@ -65,12 +77,14 @@ namespace PIACore.Model
                 cards = Card.CreateFromJsonList((List<object>)jsonTable["visibleCards"]);
             }
 
-            var pot = Convert.ToInt32(jsonTable["pot"]);
+            var pot = Convert.ToInt32(jsonTable["superPot"]);
             var blind = Convert.ToInt32(jsonTable["blind"]);
-
+            
+            var gamesOccured = Convert.ToInt32(jsonTable["game"]);
+            
             var table = new Table
             {
-                Cards = cards, Players = players, Pot = pot, SmallBlindValue = blind
+                Cards = cards, Players = players, Pot = pot, SmallBlindValue = blind, _gamesOccured = gamesOccured
             };
 
             return table;

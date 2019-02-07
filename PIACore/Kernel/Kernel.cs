@@ -8,6 +8,8 @@ using Json;
 using Newtonsoft.Json;
 using PIACore.AI.AlwaysCallAI;
 using PIACore.Helpers;
+using PIACore.Model;
+using PIACore.Model.Enums;
 
 
 namespace PIACore.Kernel
@@ -23,8 +25,8 @@ namespace PIACore.Kernel
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            DotEnv.Config();
-
+            DotEnv.Config(); 
+            
             var environments = LoadJsonDefinition();
 
             foreach (var environment in environments)
@@ -36,6 +38,7 @@ namespace PIACore.Kernel
                 
                 myThread.Start();
             }
+            
         }
 
         /// <summary>
